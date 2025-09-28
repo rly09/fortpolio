@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:fortpolio/pages/about_page.dart';
 import 'package:fortpolio/pages/home_page.dart';
 
 void main() {
