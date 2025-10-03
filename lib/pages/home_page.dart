@@ -1,104 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:fortpolio/pages/about_page.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class HomePage extends StatefulWidget {
+import '../components/underline.dart';
+
+class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  @override
-  State<HomePage> createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage>
-    with SingleTickerProviderStateMixin {
-  double _overlayOpacity = 0.4;
-  double _scale = 1.0;
-  bool _isSidebarOpen = false;
-
-  late AnimationController _controller;
-  late Animation<Offset> _sidebarAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(milliseconds: 300),
-    );
-    _sidebarAnimation = Tween<Offset>(
-      begin: const Offset(1.0, 0),
-      end: Offset.zero,
-    ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
-  }
-
-  void _toggleSidebar() {
-    setState(() {
-      _isSidebarOpen = !_isSidebarOpen;
-      if (_isSidebarOpen) {
-        _controller.forward();
-      } else {
-        _controller.reverse();
-      }
-    });
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  Widget _buildSidebar() {
-    return SlideTransition(
-      position: _sidebarAnimation,
-      child: Align(
-        alignment: Alignment.centerRight,
-        child: Container(
-          width: 220,
-          color: Colors.black87,
-          padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                "Menu",
-                style: GoogleFonts.playfairDisplay(
-                  fontSize: 22,
-                  color: Colors.white,
-                  fontWeight: FontWeight.bold,
-                ),
-              ),
-              const SizedBox(height: 40),
-              _buildMenuItem("About"),
-              _buildMenuItem("Skills"),
-              _buildMenuItem("Projects"),
-              _buildMenuItem("Contact"),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget _buildMenuItem(String title) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
-      child: GestureDetector(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => AboutPage()),
-          );
-          _toggleSidebar();
-        },
-        child: Text(
-          title,
-          style: GoogleFonts.inter(fontSize: 18, color: Colors.white),
-        ),
-      ),
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -106,96 +13,143 @@ class _HomePageState extends State<HomePage>
       backgroundColor: Colors.black,
       body: Stack(
         children: [
+          /// Top-left Name
           Positioned(
             top: 20,
             left: 20,
-            child: GestureDetector(
-              onTap: () {
-                print("RLY clicked → Go Home");
-              },
-              child: MouseRegion(
-                cursor: SystemMouseCursors.click,
-                child: Text(
-                  "RLY",
+            child: Row(
+              children: [
+                Text(
+                  "Roshan",
                   style: GoogleFonts.playfairDisplay(
-                    fontSize: 16,
+                    fontSize: 26,
+                    color: Colors.green,
+                    letterSpacing: 2,
+                  ),
+                ),
+                Text(
+                  "lalyogi",
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 26,
                     color: Colors.white,
                     letterSpacing: 2,
                   ),
                 ),
-              ),
+              ],
             ),
           ),
 
+          /// Email vertically in middle left
           Positioned(
-            top: 10,
-            right: 10,
-            child: IconButton(
-              icon: Image.asset("assets/icons/menu.png", height: 30, width: 30),
-              onPressed: _toggleSidebar,
-            ),
-          ),
-
-          /// Sidebar panel
-          _buildSidebar(),
-
-          /// Center content with image + overlay text
-          Center(
-            child: MouseRegion(
-              onEnter: (_) {
-                setState(() {
-                  _overlayOpacity = 0.2;
-                  _scale = 1.05;
-                });
-              },
-              onExit: (_) {
-                setState(() {
-                  _overlayOpacity = 0.4;
-                  _scale = 1.0;
-                });
-              },
-              child: AnimatedScale(
-                scale: _scale,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeInOut,
-                child: Stack(
-                  alignment: Alignment.center,
-                  children: [
-                    ClipRRect(
-                      borderRadius: BorderRadius.circular(4),
-                      child: Stack(
-                        children: [
-                          Image.asset(
-                            "assets/profile/profile.jpg",
-                            height: 400,
-                            width: 300,
-                            fit: BoxFit.cover,
-                          ),
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
-                            height: 400,
-                            width: 300,
-                            color: Colors.black.withOpacity(_overlayOpacity),
-                          ),
-                        ],
-                      ),
-                    ),
-                    Text(
-                      "ROSHAN LAL YOGI",
-                      textAlign: TextAlign.center,
-                      style: GoogleFonts.playfairDisplay(
-                        fontSize: 50,
-                        color: Colors.white,
-                        letterSpacing: 2,
-                      ),
-                    ),
-                  ],
+            left: 20,
+            top: 150,
+            child: RotatedBox(
+              quarterTurns: -1,
+              child: Text(
+                "yogiroshan2005@gmail.com",
+                style: GoogleFonts.inter(
+                  fontSize: 14,
+                  letterSpacing: 2,
+                  color: Colors.grey[400],
                 ),
               ),
             ),
           ),
 
-          /// Social Icons - right side
+          Positioned(
+            right: 20,
+            top: 20,
+            child: Text(
+              "LET'S TALK",
+              style: GoogleFonts.inter(
+                fontSize: 16,
+                color: Colors.white,
+                letterSpacing: 0,
+              ),
+            ),
+          ),
+
+          /// Center Quote
+          Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  "Turning ideas \ninto code and code into",
+                  textAlign: TextAlign.center,
+                  style: GoogleFonts.playfairDisplay(
+                    fontSize: 70,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w500,
+                    height: 1.4,
+                  ),
+                ),
+
+                /// Experiences with underline + star
+                Stack(
+                  alignment: Alignment.center,
+                  children: [
+                    Text(
+                      "experiences.",
+                      textAlign: TextAlign.center,
+                      style: GoogleFonts.playfairDisplay(
+                        fontSize: 70,
+                        color: Colors.green,
+                        fontWeight: FontWeight.w500,
+                        height: 1.4,
+                      ),
+                    ),
+
+                    /// Underline
+                    Positioned(
+                      bottom: -8,
+                      child: CustomPaint(
+                        size: const Size(400, 20),
+                        painter: CurvedUnderlinePainter(),
+                      ),
+                    ),
+
+                    /// Star
+                    Positioned(
+                      right: -50,
+                      bottom: -5,
+                      child: Icon(
+                        Icons.star_border_rounded,
+                        color: Colors.green,
+                        size: 30,
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
+
+          /// Bottom-left Arrow + Scroll text
+          Positioned(
+            left: 40,
+            bottom: 40,
+            child: Column(
+              children: [
+                Icon(
+                  Icons.arrow_downward,
+                  color: Colors.white,
+                  size: 28,
+                ),
+                const SizedBox(height: 8),
+                Text(
+                  "Scroll to explore",
+                  style: GoogleFonts.inter(
+                    fontSize: 12,
+                    letterSpacing: 2,
+                    color: Colors.grey[400],
+                  ),
+                ),
+              ],
+            ),
+          ),
+
+          /// Social Icons - bottom-right
           Positioned(
             right: 20,
             bottom: 50,
@@ -205,22 +159,16 @@ class _HomePageState extends State<HomePage>
                   icon: const FaIcon(
                     FontAwesomeIcons.github,
                     color: Colors.white,
+                    size: 20,
                   ),
                   onPressed: () {},
                 ),
-                const SizedBox(height: 16),
+                const SizedBox(height: 5),
                 IconButton(
                   icon: const FaIcon(
                     FontAwesomeIcons.linkedin,
                     color: Colors.white,
-                  ),
-                  onPressed: () {},
-                ),
-                const SizedBox(height: 16),
-                IconButton(
-                  icon: const FaIcon(
-                    FontAwesomeIcons.twitter,
-                    color: Colors.white,
+                    size: 20,
                   ),
                   onPressed: () {},
                 ),

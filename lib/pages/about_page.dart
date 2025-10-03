@@ -8,80 +8,69 @@ class AboutPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.black,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
-        child: SingleChildScrollView(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              /// Inspirational Quote
-              RichText(
-                text: TextSpan(
-                  style: GoogleFonts.playfairDisplay(
-                    fontSize: 38,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.white,
-                    height: 1.4,
+      body: Center(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 60),
+          child: SingleChildScrollView(
+            child: Container(
+              height: 500,
+              width: 1000,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  /// Title
+                  Text(
+                    "About Me",
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 42,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                    textAlign: TextAlign.center,
                   ),
-                  children: const [
-                    TextSpan(
-                      text: "Start",
-                      style: TextStyle(color: Color(0xFF00E5FF)),
-                    ),
-                    TextSpan(text: " where you are.\n"),
-                    TextSpan(
-                      text: "Use",
-                      style: TextStyle(color: Color(0xFF00E5FF)),
-                    ),
-                    TextSpan(text: " what you have.\n"),
-                    TextSpan(
-                      text: "Do",
-                      style: TextStyle(color: Color(0xFF00E5FF)),
-                    ),
-                    TextSpan(text: " what you can."),
-                  ],
-                ),
-              ),
-
-              const SizedBox(height: 10),
-
-              /// Author attribution
-              Align(
-                alignment: Alignment.centerRight,
-                child: Text(
-                  "~ Arthur Ashe",
-                  style: GoogleFonts.inter(
-                    fontSize: 16,
-                    color: Colors.grey[400],
-                    fontStyle: FontStyle.italic,
+                  Container(
+                    margin: const EdgeInsets.only(top: 6, bottom: 40),
+                    height: 3,
+                    width: 80,
+                    color: const Color(0xFF00E5FF),
                   ),
-                ),
+
+                  /// Bio text
+                  Text(
+                    "I’m Roshan Lal Yogi, a passionate Flutter developer who loves building apps that are not only functional but also beautifully crafted. My focus is on creating modern, responsive, and fluid user experiences with clean architecture and robust performance.",
+                    style: GoogleFonts.inter(
+                      fontSize: 18,
+                      height: 1.8,
+                      color: Colors.grey[300],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  const SizedBox(height: 20),
+                  Text(
+                    "With experience in tools like Supabase, Hive, and Isar, and backend technologies like Python and FastAPI, I aim to grow as a full-stack developer. I take pride in writing clean code, constantly learning, and pushing my creativity into real-world applications.",
+                    style: GoogleFonts.inter(
+                      fontSize: 18,
+                      height: 1.8,
+                      color: Colors.grey[300],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+
+                  const SizedBox(height: 60),
+
+                  /// Closing Line
+                  Text(
+                    "\"Turning ideas into code, and code into experiences.\"",
+                    style: GoogleFonts.playfairDisplay(
+                      fontSize: 22,
+                      fontStyle: FontStyle.italic,
+                      color: Colors.grey[400],
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ],
               ),
-
-              const SizedBox(height: 40),
-
-              /// First paragraph
-              Text(
-                "A passionate Flutter developer who believes that the best apps are not just functional—they're beautifully simple, intuitive, and built with purpose. I specialize in creating modern, responsive mobile applications with clean UIs, smooth user experiences, and robust architecture. With a strong foundation in Flutter and experience using tools like Supabase, Isar, and Hive, I enjoy crafting apps that feel fast, fluid, and ready for real-world use. I’m also expanding into backend technologies like Python and FastAPI to become a more complete full-stack app developer.",
-                style: GoogleFonts.inter(
-                  fontSize: 16,
-                  height: 1.6,
-                  color: Colors.grey[300],
-                ),
-              ),
-
-              const SizedBox(height: 24),
-
-              /// Second paragraph
-              Text(
-                "Every project I work on is a chance to solve real problems, learn something new, and turn ideas into polished, interactive experiences. I take pride in writing clean code, paying attention to detail, and constantly evolving my skills. When I’m not building apps, I’m usually exploring design trends, leveling up my coding abilities, or diving into new tech that inspires me.",
-                style: GoogleFonts.inter(
-                  fontSize: 16,
-                  height: 1.6,
-                  color: Colors.grey[300],
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),
