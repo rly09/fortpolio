@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:fortpolio/pages/about_page.dart';
-import 'package:fortpolio/pages/home_page.dart';
+import 'package:fortpolio/portfolio_pageview.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: PortfolioPageview(),
     );
   }
 }
