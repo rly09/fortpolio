@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class SeeMoreLink extends StatefulWidget {
-  const SeeMoreLink({required this.label, required this.onTap});
+  const SeeMoreLink({super.key, required this.label, required this.onTap});
   final String label;
   final VoidCallback onTap;
 

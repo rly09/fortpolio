@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class EmailLink extends StatefulWidget {
-  const EmailLink({required this.email, required this.style, required this.accent});
+  const EmailLink({super.key, required this.email, required this.style, required this.accent});
   final String email;
   final TextStyle style;
   final Color accent;

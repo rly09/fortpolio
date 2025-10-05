@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:url_launcher/url_launcher.dart';
-import 'package:flutter/services.dart';
-
 import 'components/email_link.dart';
 import 'components/model.dart';
 import 'components/social_grid.dart';
@@ -20,7 +17,7 @@ class _ContactPageState extends State<ContactPage> {
   static const Color _muted = Color(0xCCFFFFFF);
   static const Color _accent = Colors.green;
 
-  final String _email = 'yogiroshan2005@gmail.com.com';
+  final String _email = 'yogiroshan2005@gmail.com';
 
   final List<Social> _socials = const [
     Social('LinkedIn', 'https://www.linkedin.com/in/roshan-lal-yogi-495569316'),
@@ -41,14 +38,14 @@ class _ContactPageState extends State<ContactPage> {
                 builder: (context, c) {
                   final bool isWide = c.maxWidth >= 900;
 
-                  final titleStyle = GoogleFonts.inter(
+                  final titleStyle = GoogleFonts.playfairDisplay(
                     color: _text,
                     fontWeight: FontWeight.w800,
                     letterSpacing: -0.5,
                     height: 1.1,
                     fontSize: isWide ? 56 : 34,
                   );
-                  final bigAccent = GoogleFonts.inter(
+                  final bigAccent = GoogleFonts.playfairDisplay(
                     color: _accent,
                     fontWeight: FontWeight.w900,
                     letterSpacing: -0.5,

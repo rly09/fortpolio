@@ -1,10 +1,9 @@
-/* ---------------- Header (auto-scrolling marquee) ---------------- */
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TickerHeadline extends StatefulWidget {
-  const TickerHeadline();
+  const TickerHeadline({super.key});
 
   @override
   State<TickerHeadline> createState() => _TickerHeadlineState();

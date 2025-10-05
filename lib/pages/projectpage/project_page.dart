@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_launcher/url_launcher_string.dart';
 
 import 'components/models.dart';
 import 'components/project_grid.dart';
@@ -29,9 +30,9 @@ class _ProjectPageState extends State<ProjectPage> {
       url: null, // e.g., 'https://dribbble.com/your-shot'
     ),
     Project(
-      title: 'Music Web App Design',
-      subtitle: 'Product Design / 2019',
-      imagePath: 'assets/profile/profile.jpg',
+      title: 'Career Verse',
+      subtitle: 'AI Career navigation app',
+      imagePath: 'assets/project/career verse.png',
       tags: ['Web App', 'Product', 'Mobile-first'],
       url: null,
     ),
@@ -75,9 +76,7 @@ class _ProjectPageState extends State<ProjectPage> {
                     SeeMoreLink(
                       label: 'See more',
                       onTap: () {
-                        // TODO: open your portfolio URL or route
-                        // Navigator.pushNamed(context, '/all-projects');
-                        // or launchUrlString('https://your-portfolio.com/projects');
+                        launchUrlString('https://github.com/rly09');
                       },
                     ),
                   ],

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class TextLink extends StatefulWidget {
-  const TextLink({required this.label, required this.onTap});
+  const TextLink({super.key, required this.label, required this.onTap});
   final String label;
   final VoidCallback onTap;
 
