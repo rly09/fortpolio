@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fortpolio/pages/aboutpage/about_page.dart';
+import 'package:fortpolio/pages/contactpage/contact_page.dart';
 import 'package:fortpolio/pages/homepage/home_page.dart';
 import 'package:fortpolio/pages/projectpage/project_page.dart';
 import 'package:fortpolio/pages/skillpage/skill_page.dart';
@@ -20,7 +21,7 @@ class _PortfolioPageviewState extends State<PortfolioPageview> {
       body: PageView(
         controller: _controller,
         scrollDirection: Axis.vertical,
-        children: [HomePage(), AboutPage(), ProjectPage(), SkillPage()],
+        children: [HomePage(), AboutPage(), ProjectPage(), SkillPage(), ContactPage()],
       ),
     );
   }
